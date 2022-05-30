@@ -1,6 +1,8 @@
 import React from "react";
 
 const ImageCard = (props) => {
+  const tags = props.image.tags.split(",");
+
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg">
       <img
@@ -29,15 +31,14 @@ const ImageCard = (props) => {
       </div>
 
       <div className="px-6 py-4 ">
-        <span className="bg-gray-200 rounded-full px-2 py-1 font-semibold inline-block text-gray-700 text-sm mr-2">
-          #tag1
-        </span>
-        <span className="bg-gray-200 rounded-full px-2 py-1 font-semibold inline-block text-gray-700 text-sm mr-2">
-          #tag2
-        </span>
-        <span className="bg-gray-200 rounded-full px-2 py-1 font-semibold inline-block text-gray-700 text-sm mr-2">
-          #tag3
-        </span>
+        {tags.map((tag, index) => (
+          <span
+            key={index}
+            className="bg-gray-200 rounded-full px-2 py-1 font-semibold inline-block text-gray-700 text-sm mr-2"
+          >
+            #{tag}
+          </span>
+        ))}
       </div>
     </div>
   );
